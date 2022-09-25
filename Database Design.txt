@@ -1,0 +1,74 @@
+----------------------Education-app------------------
+	:LandingTitle
+	 	->title
+	 	->description
+		->photo
+
+	:Hero
+		-> title
+		-> description
+		-> photo
+	
+	:WCM
+		-> title
+		-> icon
+		-> description
+
+	:trainer
+		-> name
+		-> bio
+		-> category
+		-> photo
+		-> fb_link
+		-> twitter_link
+		-> instagram_link
+		-> linkedin_link
+	
+
+	:Setting
+		-> address
+		-> phone
+		-> email
+
+
+	:Subscribe
+		-> email
+
+
+	:Testimonial
+		-> name
+		-> position
+		-> description
+		-> photo
+	
+	
+	:event
+		-> photo
+		-> title
+		-> starting_date
+		-> description
+
+	:contact
+		-> description
+	
+	:message
+		-> name
+		-> email
+		-> subject
+		-> message
+
+	:Course
+		-> trainer_id
+		-> title
+		-> description
+		-> price
+		-> available_seat
+		-> schedule
+
+
+
+
+
+
+	
+		
