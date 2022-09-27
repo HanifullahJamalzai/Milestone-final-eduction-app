@@ -69,8 +69,6 @@
 <!-- Template Main JS File -->
 <script src="{{ asset('admin_assets/js/main.js') }}"></script>
 
-@yield('scripts')
-
 </body>
 
 </html>

@@ -41,12 +41,3 @@
 
 
 @endsection
-
-
-@section('scripts')
-
-<script>
-    alert('Welcome');
-</script>
-
-@endsection
