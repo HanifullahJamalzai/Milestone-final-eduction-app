@@ -18,4 +18,4 @@ Route::get('/', function(){
     return 'I will be a landing page route';
 });
 
-Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
