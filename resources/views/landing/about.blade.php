@@ -145,7 +145,7 @@
             <div class="swiper-slide swiper-slide-next" role="group" aria-label="4 / 5" data-swiper-slide-index="3" style="width: 696px; margin-right: 20px;">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                  <img src="{{ asset('landing_assets/img/testimonials/testimonials-4.jpg') }}" class="testimonial-img" alt="">
                   <h3>Matt Brandon</h3>
                   <h4>Freelancer</h4>
                   <p>
@@ -160,7 +160,7 @@
             <div class="swiper-slide" role="group" aria-label="5 / 5" data-swiper-slide-index="4" style="width: 696px; margin-right: 20px;">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <img src="{{ asset('landing_assets/img/testimonials/testimonials-5.jpg') }}" class="testimonial-img" alt="">
                   <h3>John Larson</h3>
                   <h4>Entrepreneur</h4>
                   <p>
@@ -175,7 +175,7 @@
           <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="1 / 5" data-swiper-slide-index="0" style="width: 696px; margin-right: 20px;">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <img src="{{ asset('landing_assets/img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="">
                   <h3>Saul Goodman</h3>
                   <h4>Ceo &amp; Founder</h4>
                   <p>
@@ -195,6 +195,6 @@
   </main>
 
 
-  
+
 
 @endsection

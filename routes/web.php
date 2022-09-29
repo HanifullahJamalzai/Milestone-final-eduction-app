@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\landing\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,6 @@ Route::get('/event', [LandingController::class, 'event'])->name('landing.event')
 Route::get('/trainer', [LandingController::class, 'trainer'])->name('landing.trainer');
 
 
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
