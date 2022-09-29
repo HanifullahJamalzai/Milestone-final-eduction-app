@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\landing\LandingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function(){
-    return 'I will be a landing page route';
-});
+
+Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
