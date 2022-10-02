@@ -30,14 +30,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::create([
-        //     'name' => 'Hanifullah',
-        //     'email' => 'hanifullah@gmail.com',
-        //     'email_verified_at' => now(),
-        //     'role' => 1,
-        //     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        //     // 'remember_token' => Str::random(10),
-        // ]);
+        \App\Models\User::create([
+            'name' => 'Hanifullah',
+            'email' => 'hanifullah@gmail.com',
+            'email_verified_at' => now(),
+            'role' => 1,
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            // 'remember_token' => Str::random(10),
+        ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Hanifullah',
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
         //     // 'remember_token' => Str::random(10),
         // ]);
 
-        // Contact::factory()->create();
+        Contact::factory()->create();
         Course::factory(20)->create();
         Event::factory(2)->create();
         Hero::factory()->create();

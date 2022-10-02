@@ -23,6 +23,7 @@ class CourseFactory extends Factory
             'schedule' => fake()->dateTime(),
             'available_seat' => 5,
             'price' => 100,
+            'photo' => fake()->imageUrl(640, 480, 'animals', true),
         ];
     }
 }
