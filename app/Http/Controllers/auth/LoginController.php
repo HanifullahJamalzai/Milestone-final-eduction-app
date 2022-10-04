@@ -25,9 +25,10 @@ class LoginController extends Controller
         {
             session()->flash('error', 'Credentials do not match');
             return back();
-            
+
         }else{
-            auth()->attempt(['email' => $request->email, 'password' => $request->password]);
+            auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember);
+            session()->flash('success', 'Welcome to Dashboard Dear '.auth()->user()->name);
             return redirect('admin');
         }
     }

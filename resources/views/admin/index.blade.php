@@ -1,6 +1,7 @@
 @extends('admin.layouts.index')
 
 @section('content')
+@include('common.alert')
 
   <div class="pagetitle">
     <h1>Blank Page</h1>
