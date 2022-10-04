@@ -11,4 +11,24 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
+    public function login(Request $request)
+    {
+        // dd($request->all());
+        // dd(request()->all());
+        $request->validate([
+            'email'    => 'required|email|max:255',
+            'password' => 'required',
+        ]);
+
+        if(!auth()->attempt(['email' => $request->email, 'password' => $request->password]))
+        {
+            session()->flash('error', 'Credentials do not match');
+            return back();
+            
+        }else{
+            auth()->attempt(['email' => $request->email, 'password' => $request->password]);
+            return redirect('admin');
+        }
+    }
 }

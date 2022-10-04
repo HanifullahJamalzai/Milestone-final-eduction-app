@@ -26,5 +26,7 @@ Route::get('/trainer', [LandingController::class, 'trainer'])->name('landing.tra
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
 

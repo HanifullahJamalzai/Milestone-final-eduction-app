@@ -60,23 +60,28 @@
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your email & password to login</p>
+                    @include('common.alert')
                   </div>
 
-                  <form class="row g-3">
+                  <form class="row g-3" action="{{ route('login') }}" method="POST">
+                    @csrf
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Email</label>
-                      <div class="input-group has-validation">
-                        <input type="text" name="email" class="form-control" id="yourUsername">
-                        <div class="invalid-feedback">Please enter your username.</div>
+                      <div class="input-group">
+                        <input type="email" name="email" class="form-control" id="yourUsername" value="{{ old('email') }}">
                       </div>
+                      @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword">
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <div class="col-12">
