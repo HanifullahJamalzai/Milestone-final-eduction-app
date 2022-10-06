@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\WCMController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\LogoutController;
 use App\Http\Controllers\landing\LandingController;
@@ -33,3 +34,6 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
 
+Route::get('/wcm', [WCMController::class, 'index'])->name('wcm')->middleware('auth');
+Route::get('/wcm/create', [WCMController::class, 'create'])->name('wcm.create')->middleware('auth');
+Route::post('/wcm/store', [WCMController::class, 'store'])->name('wcm.store')->middleware('auth');

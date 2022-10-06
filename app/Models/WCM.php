@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class WCM extends Model
 {
     use HasFactory;
+
+    // protected $fillable = ['title', 'icon', 'description'];
+    protected $guarded = [];
 }
