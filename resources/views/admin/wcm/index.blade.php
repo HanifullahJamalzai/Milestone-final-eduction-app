@@ -45,7 +45,7 @@
                             <td>{{ $item->description }}</td>
                             <td class="d-flex" style="justify-content: space-around;">
                               
-                              <form action="{{ route('wcm.delete',['wcm' => $item->id]) }}" method="post">
+                              <form action="{{ route('wcm.destroy',['wcm' => $item->id]) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button> 
