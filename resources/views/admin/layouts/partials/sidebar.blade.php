@@ -19,7 +19,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{ route('trainer.index') }}">
           <i class="bi bi-grid"></i>
           <span>Trainer</span>
         </a>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\TrainerController;
 use App\Http\Controllers\admin\WCMController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\LogoutController;
@@ -42,6 +43,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->mi
 // Route::put('/wcm/{wcm}/update', [WCMController::class, 'update'])->name('wcm.update')->middleware('auth');
 
 Route::resource('wcm', WCMController::class)->middleware('auth');
+Route::resource('trainer', TrainerController::class)->middleware('auth');
+
 
 
 
