@@ -37,3 +37,6 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->mi
 Route::get('/wcm', [WCMController::class, 'index'])->name('wcm')->middleware('auth');
 Route::get('/wcm/create', [WCMController::class, 'create'])->name('wcm.create')->middleware('auth');
 Route::post('/wcm/store', [WCMController::class, 'store'])->name('wcm.store')->middleware('auth');
+Route::delete('/wcm/{wcm}/delete', [WCMController::class, 'destroy'])->name('wcm.delete')->middleware('auth');
+Route::get('/wcm/{wcm}/edit', [WCMController::class, 'edit'])->name('wcm.edit')->middleware('auth');
+Route::put('/wcm/{wcm}/update', [WCMController::class, 'update'])->name('wcm.update')->middleware('auth');

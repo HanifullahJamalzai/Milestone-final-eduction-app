@@ -74,9 +74,9 @@ class WCMController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(WCM $wcm)
     {
-        //
+        return view('admin.wcm.edit', compact('wcm'));
     }
 
     /**
@@ -86,9 +86,23 @@ class WCMController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, WCM $wcm)
     {
-        //
+        // dd($request->all(), $wcm);
+        $request->validate([
+            'title' => 'required|min:8|max:255',
+            'icon'  => 'required|min:4|max:255',
+            'description'  => 'required|min:4',
+        ]);
+
+        $wcm->update([
+            'title' => $request->title,
+            'icon'  => $request->icon,
+            'description' => $request->description,
+        ]);
+
+        session()->flash('success', 'You have successfully Update the WCM');
+        return redirect('wcm');
     }
 
     /**
@@ -97,8 +111,13 @@ class WCMController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(WCM $wcm)
     {
-        //
+        // $wcm = WCM::find($id);
+        // dd($wcm);
+        $wcm->delete();
+
+        session()->flash('success', 'You have successfully Deleted  WCM');
+        return redirect('wcm');
     }
 }

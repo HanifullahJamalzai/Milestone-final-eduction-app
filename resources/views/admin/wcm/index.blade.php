@@ -43,7 +43,17 @@
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->icon }}</td>
                             <td>{{ $item->description }}</td>
-                            <td class="d-flex" style="justify-content: space-around;"><button class="btn btn-danger btn-sm">Delete</button> <button class="btn btn-primary btn-sm">Edit</button></td>
+                            <td class="d-flex" style="justify-content: space-around;">
+                              
+                              <form action="{{ route('wcm.delete',['wcm' => $item->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button> 
+                              </form>
+
+                              <a class="btn btn-primary btn-sm" href="{{ route('wcm.edit',['wcm' => $item->id]) }}">Edit</a>
+
+                            </td>
                         </tr>
                     @empty
                         <tr>
