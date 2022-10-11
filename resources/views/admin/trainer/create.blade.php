@@ -85,6 +85,17 @@
                   </div>
 
                   <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Twitter Link</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="twitter_link" class="form-control" value="{{ old('twitter_link') }}">
+                      @error('twitter_link')
+                          <span class="text-danger"> {{ $message }} </span>
+                      @enderror
+                    </div>
+                  </div>
+
+
+                  <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">Category</label>
                     <div class="col-sm-10">
                       <input type="text" name="category" class="form-control" value="{{ old('category') }}">

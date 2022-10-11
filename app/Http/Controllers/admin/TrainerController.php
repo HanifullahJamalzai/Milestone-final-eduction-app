@@ -40,7 +40,27 @@ class TrainerController extends Controller
      */
     public function store(TrainerStoreRequest $request)
     {
-        dd($request->all());
+        $trainer = new Trainer();
+        $trainer->name = $request->name;
+        $trainer->bio  = $request->bio;
+        $trainer->category = $request->category;
+        $trainer->fb_link  = $request->fb_link;
+        $trainer->twitter_link  = $request->twitter_link;
+        $trainer->instagram_link  = $request->instagram_link;
+        $trainer->linkedin_link  = $request->linkedin_link;
+
+        // dd($request->File('photo'));
+        if($request->hasFile('photo'))
+        {
+            $fileName = 'trainer_'.date('YmdHis').'_'.rand(10, 10000).'.'.$request->File('photo')->extension();
+            $request->photo->storeAs('/photo/trainer', $fileName, 'public');
+            $trainer->photo = '/storage/photo/trainer/'.$fileName;
+        }
+        $trainer->save();
+
+        return redirect('admin/trainer');
+
+
     }
 
     /**
