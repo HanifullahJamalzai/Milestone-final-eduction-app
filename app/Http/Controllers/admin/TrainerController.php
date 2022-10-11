@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TrainerStoreRequest;
+use App\Http\Requests\TrainerUpdateRequest;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 
@@ -58,8 +59,9 @@ class TrainerController extends Controller
         }
         $trainer->save();
 
-        return redirect('admin/trainer');
+        session()->flash('success', 'You have successfully Added a new Trainer');
 
+        return redirect('admin/trainer');
 
     }
 
@@ -80,9 +82,9 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trainer $trainer)
     {
-        //
+       return view('admin.trainer.edit', compact('trainer'));
     }
 
     /**
@@ -92,9 +94,29 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TrainerUpdateRequest $request, Trainer $trainer)
     {
-        //
+        $trainer->name = $request->name;
+        $trainer->bio  = $request->bio;
+        $trainer->category = $request->category;
+        $trainer->fb_link  = $request->fb_link;
+        $trainer->twitter_link  = $request->twitter_link;
+        $trainer->instagram_link  = $request->instagram_link;
+        $trainer->linkedin_link  = $request->linkedin_link;
+
+        // dd($request->File('photo'));
+        if($request->hasFile('photo'))
+        {
+            $fileName = 'trainer_'.date('YmdHis').'_'.rand(10, 10000).'.'.$request->File('photo')->extension();
+            $request->photo->storeAs('/photo/trainer', $fileName, 'public');
+            $trainer->photo = '/storage/photo/trainer/'.$fileName;
+        }
+        $trainer->save();
+        
+        session()->flash('success', 'You have successfully Update a Trainer');
+
+        return redirect('admin/trainer');
+        
     }
 
     /**
@@ -103,8 +125,13 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trainer $trainer)
     {
-        //
+        @unlink(public_path().'/'.$trainer->photo);
+        $trainer->delete();
+        
+        session()->flash('success', 'You have successfully Deleted a Trainer');
+
+        return back();
     }
 }
