@@ -2,7 +2,6 @@
 
 @section('content')
 
-
  
 <main id="main" data-aos="fade-in" class="aos-init aos-animate">
 

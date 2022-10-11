@@ -42,8 +42,25 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->mi
 // Route::get('/wcm/{wcm}/edit', [WCMController::class, 'edit'])->name('wcm.edit')->middleware('auth');
 // Route::put('/wcm/{wcm}/update', [WCMController::class, 'update'])->name('wcm.update')->middleware('auth');
 
-Route::resource('wcm', WCMController::class)->middleware('auth');
-Route::resource('trainer', TrainerController::class)->middleware('auth');
+
+// Route::prefix('admin')->group(function () {
+
+//     Route::middleware(['auth'])->group(function () {
+
+//         Route::resource('wcm', WCMController::class);
+//         Route::resource('trainer', TrainerController::class);
+    
+//     });  
+
+// });
+
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
+    Route::resource('wcm', WCMController::class);
+    Route::resource('trainer', TrainerController::class);
+});
+
+
 
 
 

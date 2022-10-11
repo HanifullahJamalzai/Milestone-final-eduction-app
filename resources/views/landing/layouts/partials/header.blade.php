@@ -11,6 +11,7 @@
           <li><a class="active" href="{{ route('landing.index') }}">Home</a></li>
           <li><a href="{{ route('landing.about') }}">About</a></li>
           <li><a href="{{ route('landing.course') }}">Courses</a></li>
+          {{-- <li><a href="/trainer">Trainers</a></li> --}}
           <li><a href="{{ route('landing.trainer') }}">Trainers</a></li>
           <li><a href="{{ route('landing.event') }}">Events</a></li>
           <li><a href="{{ route('landing.contact') }}">Contact</a></li>
