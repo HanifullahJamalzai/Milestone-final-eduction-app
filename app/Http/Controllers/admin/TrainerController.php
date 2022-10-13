@@ -136,4 +136,11 @@ class TrainerController extends Controller
 
         return back();
     }
+
+    public function search(Request $request)
+    {
+        $trainers = Trainer::where('name', 'LIKE', '%'.$request->search.'%')->get();
+        
+        return view('admin.trainer.search', compact('trainers'));
+    }
 }

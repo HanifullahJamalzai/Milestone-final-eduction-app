@@ -57,7 +57,9 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->mi
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::resource('wcm', WCMController::class);
+    Route::post('trainer/search', [TrainerController::class, 'search'])->name('trainer.search');
     Route::resource('trainer', TrainerController::class);
+
 });
 
 
