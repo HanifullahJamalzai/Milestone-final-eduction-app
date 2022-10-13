@@ -26,6 +26,13 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('course.index') }}">
+          <i class="bi bi-grid"></i>
+          <span>Course</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="">
           <i class="bi bi-grid"></i>
           <span>Event</span>

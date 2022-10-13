@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\CourseController;
 use App\Http\Controllers\admin\TrainerController;
 use App\Http\Controllers\admin\WCMController;
 use App\Http\Controllers\auth\LoginController;
@@ -59,6 +60,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::resource('wcm', WCMController::class);
     Route::post('trainer/search', [TrainerController::class, 'search'])->name('trainer.search');
     Route::resource('trainer', TrainerController::class);
+    Route::post('course/search', [CourseController::class, 'search'])->name('course.search');
+    Route::resource('course', CourseController::class);
 
 });
 
