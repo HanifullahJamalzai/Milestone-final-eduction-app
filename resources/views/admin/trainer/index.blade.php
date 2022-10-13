@@ -46,7 +46,7 @@
 
                             <td class="d-flex" style="justify-content: space-around;">
                               
-                                <a class="btn btn-primary btn-sm" href="{{ route('trainer.edit',['trainer' => $item->id]) }}">Show</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('trainer.show',['trainer' => $item]) }}">Show</a>
                                 
                                 <a class="btn btn-primary btn-sm" href="{{ route('trainer.edit',['trainer' => $item->id]) }}">Edit</a>
                                 

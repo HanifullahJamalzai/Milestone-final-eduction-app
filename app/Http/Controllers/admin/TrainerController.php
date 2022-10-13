@@ -71,9 +71,9 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trainer $trainer)
     {
-        //
+        return view('admin.trainer.show', compact('trainer'));
     }
 
     /**
@@ -107,6 +107,7 @@ class TrainerController extends Controller
         // dd($request->File('photo'));
         if($request->hasFile('photo'))
         {
+            @unlink(public_path().'/'.$trainer->photo);
             $fileName = 'trainer_'.date('YmdHis').'_'.rand(10, 10000).'.'.$request->File('photo')->extension();
             $request->photo->storeAs('/photo/trainer', $fileName, 'public');
             $trainer->photo = '/storage/photo/trainer/'.$fileName;
