@@ -17,7 +17,8 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        $trainers = Trainer::all();
+        $trainers = Trainer::paginate(4);
+        // $trainers = Trainer::all();
         // $trainers = Trainer::get();
         // dd($trainers);
         return view('admin.trainer.index', compact('trainers'));

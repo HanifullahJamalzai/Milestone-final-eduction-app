@@ -66,6 +66,8 @@
               </table>
               <!-- End Table with hoverable rows -->
 
+              {{ $trainers->links() }}
+              
             </div>
           </div>
     </div>
