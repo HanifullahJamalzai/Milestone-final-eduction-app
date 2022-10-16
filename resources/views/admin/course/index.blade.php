@@ -31,7 +31,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex" style="justify-content: space-between;">
-                    <h5 class="card-title">Trainers List</h5>
+                    <h5 class="card-title">Courses List</h5>
                     <a href="{{ route('course.create') }}">
                         <i class="bi bi-plus-circle" style="font-size: 2em; cursor: pointer; margin-top: 0.4rem"></i>
                     </a>
