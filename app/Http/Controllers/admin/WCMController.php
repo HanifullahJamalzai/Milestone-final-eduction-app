@@ -5,9 +5,14 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\WCM;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class WCMController extends Controller
 {
+    public function __construct()
+    {
+        return Gate::authorize('admin');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -10,13 +10,14 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
+      @can('admin')
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('wcm.index') }}">
           <i class="bi bi-grid"></i>
           <span>WCM</span>
         </a>
       </li>
+      @endcan
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('trainer.index') }}">

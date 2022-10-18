@@ -36,9 +36,11 @@
                         <i class="bi bi-plus-circle" style="font-size: 2em; cursor: pointer; margin-top: 0.4rem"></i>
                     </a>
 
-                    <a href="{{ route('course.trash') }}">
-                      <i class="bi bi-trash" style="font-size: 2em; cursor: pointer; margin-top: 0.4rem"></i>
-                    </a>
+                    @can('admin')
+                      <a href="{{ route('course.trash') }}">
+                        <i class="bi bi-trash" style="font-size: 2em; cursor: pointer; margin-top: 0.4rem"></i>
+                      </a>
+                    @endcan
                 </div>
 
               <!-- Table with hoverable rows -->

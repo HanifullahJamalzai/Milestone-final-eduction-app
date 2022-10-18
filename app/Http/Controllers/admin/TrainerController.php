@@ -7,6 +7,7 @@ use App\Http\Requests\TrainerStoreRequest;
 use App\Http\Requests\TrainerUpdateRequest;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TrainerController extends Controller
 {
@@ -129,6 +130,7 @@ class TrainerController extends Controller
      */
     public function destroy(Trainer $trainer)
     {
+        Gate::authorize('admin');
         @unlink(public_path().'/'.$trainer->photo);
         $trainer->delete();
         

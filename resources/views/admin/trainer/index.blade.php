@@ -61,12 +61,13 @@
                                 <a class="btn btn-primary btn-sm" href="{{ route('trainer.show',['trainer' => $item]) }}">Show</a>
                                 
                                 <a class="btn btn-primary btn-sm" href="{{ route('trainer.edit',['trainer' => $item->id]) }}">Edit</a>
-                                
-                                <form action="{{ route('trainer.destroy',['trainer' => $item->id]) }}" method="post">
-                                  @csrf
-                                  @method('delete')
-                                  <button type="submit" class="btn btn-danger btn-sm">Delete</button> 
-                                </form>
+                                @can('delete', $item)
+                                  <form action="{{ route('trainer.destroy',['trainer' => $item->id]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button> 
+                                  </form>
+                                @endcan
                             </td>
                         </tr>
                     @empty

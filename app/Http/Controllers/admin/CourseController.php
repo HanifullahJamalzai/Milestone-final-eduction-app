@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CourseController extends Controller
 {
@@ -152,6 +153,7 @@ class CourseController extends Controller
 
     public function trash()
     {
+        Gate::authorize('admin');
         // $courses = Course::withTrashed()->get();
         $courses = Course::onlyTrashed()->get();
         // dd($courses);
@@ -160,6 +162,7 @@ class CourseController extends Controller
 
     public function restore($course)
     {
+        Gate::authorize('admin');
         $course = Course::onlyTrashed()->where('id', $course)->first();
         $course->restore();
 
@@ -169,6 +172,7 @@ class CourseController extends Controller
 
     public function forcedelete($course)
     {
+        Gate::authorize('admin');
         $course = Course::onlyTrashed()->where('id', $course)->first();
         @unlink(public_path().'/'.$course->photo);
         $course->forceDelete();
