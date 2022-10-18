@@ -61,6 +61,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::post('trainer/search', [TrainerController::class, 'search'])->name('trainer.search');
     Route::resource('trainer', TrainerController::class);
     Route::post('course/search', [CourseController::class, 'search'])->name('course.search');
+    Route::get('/course/trash', [CourseController::class, 'trash'])->name('course.trash');
+    Route::get('/course/{course}/restore', [CourseController::class, 'restore'])->name('course.restore');
+    Route::get('/course/{course}/forcedelete', [CourseController::class, 'forcedelete'])->name('course.forcedelete');
     Route::resource('course', CourseController::class);
 
 });

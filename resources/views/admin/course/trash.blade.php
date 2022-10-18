@@ -35,10 +35,7 @@
                     <a href="{{ route('course.create') }}">
                         <i class="bi bi-plus-circle" style="font-size: 2em; cursor: pointer; margin-top: 0.4rem"></i>
                     </a>
-
-                    <a href="{{ route('course.trash') }}">
-                      <i class="bi bi-trash" style="font-size: 2em; cursor: pointer; margin-top: 0.4rem"></i>
-                    </a>
+                    
                 </div>
 
               <!-- Table with hoverable rows -->
@@ -61,16 +58,10 @@
                             <td>{{ $item->available_seat }}</td>
 
                             <td class="d-flex" style="justify-content: space-around;">
-                              
-                                <a class="btn btn-primary btn-sm" href="{{ route('course.show',['course' => $item]) }}">Show</a>
                                 
-                                <a class="btn btn-primary btn-sm" href="{{ route('course.edit',['course' => $item->id]) }}">Edit</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('course.restore',['course' => $item->id]) }}">Restore</a>
+                                <a class="btn btn-danger btn-sm" href="{{ route('course.forcedelete',['course' => $item->id]) }}">ForceDelete</a>
                                 
-                                <form action="{{ route('course.destroy',['course' => $item->id]) }}" method="post">
-                                  @csrf
-                                  @method('delete')
-                                  <button type="submit" class="btn btn-danger btn-sm">Delete</button> 
-                                </form>
                             </td>
                         </tr>
                     @empty
@@ -81,8 +72,6 @@
                 </tbody>
               </table>
               <!-- End Table with hoverable rows -->
-
-              {{ $courses->links() }}
               
             </div>
           </div>

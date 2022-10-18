@@ -149,4 +149,33 @@ class CourseController extends Controller
         session()->flash('success', 'Course has been Deleted');
         return redirect('admin/course');
     }
+
+    public function trash()
+    {
+        // $courses = Course::withTrashed()->get();
+        $courses = Course::onlyTrashed()->get();
+        // dd($courses);
+        return view('admin.course.trash', compact('courses'));
+    }
+
+    public function restore($course)
+    {
+        $course = Course::onlyTrashed()->where('id', $course)->first();
+        $course->restore();
+
+        session()->flash('success', 'Course has been restored');
+        return redirect('admin/course');
+    }
+
+    public function forcedelete($course)
+    {
+        $course = Course::onlyTrashed()->where('id', $course)->first();
+        @unlink(public_path().'/'.$course->photo);
+        $course->forceDelete();
+
+        session()->flash('success', 'Course has been removed');
+        return redirect('admin/course');
+    }
+
+
 }
