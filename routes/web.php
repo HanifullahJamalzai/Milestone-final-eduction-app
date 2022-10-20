@@ -27,7 +27,7 @@ Route::get('/contact', [LandingController::class, 'contact'])->name('landing.con
 Route::get('/course', [LandingController::class, 'course'])->name('landing.course');
 Route::get('/event', [LandingController::class, 'event'])->name('landing.event');
 Route::get('/trainer', [LandingController::class, 'trainer'])->name('landing.trainer');
-
+Route::get('/course-detail', [LandingController::class, 'courseDetail'])->name('courseDetail');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');

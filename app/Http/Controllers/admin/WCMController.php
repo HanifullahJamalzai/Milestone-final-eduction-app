@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Gate;
 
 class WCMController extends Controller
 {
-    public function __construct()
-    {
-        return Gate::authorize('admin');
-    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +17,7 @@ class WCMController extends Controller
      */
     public function index()
     {
+        Gate::authorize('admin');
         $wcms = WCM::all();
         // $wcms = [];
         // dd($wcms);
@@ -33,6 +31,8 @@ class WCMController extends Controller
      */
     public function create()
     {
+        
+        Gate::authorize('admin');
         return view('admin.wcm.create');
     }
 
@@ -44,6 +44,8 @@ class WCMController extends Controller
      */
     public function store(Request $request)
     {
+        
+        Gate::authorize('admin');
         $request->validate([
             'title' => 'required|min:8|max:255',
             'icon'  => 'required|min:4|max:255',
@@ -81,6 +83,8 @@ class WCMController extends Controller
      */
     public function edit(WCM $wcm)
     {
+        
+        Gate::authorize('admin');
         return view('admin.wcm.edit', compact('wcm'));
     }
 
@@ -93,6 +97,8 @@ class WCMController extends Controller
      */
     public function update(Request $request, WCM $wcm)
     {
+        
+        Gate::authorize('admin');
         // dd($request->all(), $wcm);
         $request->validate([
             'title' => 'required|min:8|max:255',
@@ -118,6 +124,8 @@ class WCMController extends Controller
      */
     public function destroy(WCM $wcm)
     {
+        
+        Gate::authorize('admin');
         // $wcm = WCM::find($id);
         // dd($wcm);
         $wcm->delete();

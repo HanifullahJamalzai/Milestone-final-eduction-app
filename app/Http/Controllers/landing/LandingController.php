@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\landing;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Course;
+use App\Models\Event;
 use App\Models\Hero;
 use App\Models\LandingTitle;
 use App\Models\Setting;
+use App\Models\Testimonial;
 use App\Models\Trainer;
 use App\Models\WCM;
 use Illuminate\Http\Request;
@@ -27,26 +30,42 @@ class LandingController extends Controller
 
     public function about()
     {
-        return view('landing.about');
+        $hero         = Hero::first();
+        $testimonials = Testimonial::all();
+        $eventCount   = Event::count();
+        $trainerCount = Trainer::count();
+        $courseCount  = Course::count();
+        
+        return view('landing.about', compact('hero', 'testimonials', 'eventCount', 'trainerCount', 'courseCount'));
     }
 
     public function contact()
     {
-        return view('landing.contact');
+        $contact = Contact::first();
+        return view('landing.contact',compact('contact'));
     }
 
     public function course()
     {
-        return view('landing.course');
+        $courses = Course::all();
+        return view('landing.course', compact('courses'));
+    }
+
+    public function courseDetail()
+    {
+        return view('landing.courseDetail');
     }
 
     public function event()
     {
-        return view('landing.event');
+        $events = Event::all();
+        return view('landing.event', compact('events'));
     }
 
     public function trainer()
     {
-        return view('landing.trainer');
+        $trainers = Trainer::all();
+
+        return view('landing.trainer', compact('trainers'));
     }
 }
