@@ -21,11 +21,10 @@ class LandingController extends Controller
         $landingTitle = LandingTitle::first();
         $hero         = Hero::first();
         $wcm          = WCM::all();
-        $setting      = Setting::first();
         $courses      = Course::inRandomOrder()->limit(3)->get();
         $trainers     = Trainer::inRandomOrder()->limit(3)->get();
 
-        return view('landing.index', compact('trainers','landingTitle', 'hero', 'wcm', 'setting', 'courses'));
+        return view('landing.index', compact('trainers','landingTitle', 'hero', 'wcm', 'courses'));
     }
 
     public function about()
