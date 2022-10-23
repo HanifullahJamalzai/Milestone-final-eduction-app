@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'settingMiddleware'], function(){
+Route::group(['middleware' => ['settingMiddleware', 'LanguageChanger']], function(){
     Route::get('/', [LandingController::class, 'index'])->name('landing.index');
     Route::get('/about', [LandingController::class, 'about'])->name('landing.about');
     Route::get('/contact', [LandingController::class, 'contact'])->name('landing.contact');
@@ -28,6 +28,11 @@ Route::group(['middleware' => 'settingMiddleware'], function(){
     Route::get('/event', [LandingController::class, 'event'])->name('landing.event');
     Route::get('/trainer', [LandingController::class, 'trainer'])->name('landing.trainer');
     Route::get('/course-detail', [LandingController::class, 'courseDetail'])->name('courseDetail');
+    Route::get('/language/{language}', function($language){
+        // app()->setLocale($language);
+        session()->put('language', $language);
+        return back();
+    })->name('language');
 });
 
 
