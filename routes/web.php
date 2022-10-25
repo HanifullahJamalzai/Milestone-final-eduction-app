@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\WCMController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\LogoutController;
 use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\auth\VerifyController;
 use App\Http\Controllers\landing\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +43,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register/store', [RegisterController::class, 'register'])->name('register');
-
+Route::get('verify/{token}', [VerifyController::class, 'verify']);
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
 

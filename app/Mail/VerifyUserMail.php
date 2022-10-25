@@ -17,6 +17,7 @@ class VerifyUserMail extends Mailable
      * @return void
      */
     public $token;
+    
     public function __construct($token)
     {
         $this->token = $token;
