@@ -50,9 +50,11 @@ class LandingController extends Controller
         return view('landing.course', compact('courses'));
     }
 
-    public function courseDetail()
+    public function courseDetail($id)
     {
-        return view('landing.courseDetail');
+        $course = Course::find($id);
+
+        return view('landing.courseDetail', compact('course'));
     }
 
     public function event()

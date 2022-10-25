@@ -27,7 +27,8 @@ Route::group(['middleware' => ['settingMiddleware', 'LanguageChanger']], functio
     Route::get('/course', [LandingController::class, 'course'])->name('landing.course');
     Route::get('/event', [LandingController::class, 'event'])->name('landing.event');
     Route::get('/trainer', [LandingController::class, 'trainer'])->name('landing.trainer');
-    Route::get('/course-detail', [LandingController::class, 'courseDetail'])->name('courseDetail');
+    Route::get('/course-detail/{id}/{slug}', [LandingController::class, 'courseDetail'])->name('courseDetail');
+    
     Route::get('/language/{language}', function($language){
         // app()->setLocale($language);
         session()->put('language', $language);

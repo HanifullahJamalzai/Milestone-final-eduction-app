@@ -95,7 +95,7 @@
                     <p class="price">{{ $item->price }}$</p>
                   </div>
 
-                  <h3><a href="course-details.html">{{ $item->title }}</a></h3>
+                  <h3><a href="{{ route('courseDetail', ['id' => $item->id, 'slug' => Str::slug($item->title, '-')]) }}">{{ $item->title }}</a></h3>
                   <p>{{ Str::limit($item->description, 100, '...')  }}</p>
                   <div class="trainer d-flex justify-content-between align-items-center">
                     <div class="trainer-profile d-flex align-items-center">
