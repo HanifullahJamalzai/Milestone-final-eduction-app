@@ -59,33 +59,30 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Please Enter your email</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                     @include('common.alert')
                   </div>
 
-                  <form class="row g-3" action="{{ route('reset.email') }}" method="POST">
+                  <form class="row g-3" action="{{ route('reset.submit') }}" method="POST">
                     @csrf
 
+                    <input type="hidden" name="token" value="{{ $isToken->token }}">
+
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Email</label>
-                      <div class="input-group">
-                        <input type="email" name="email" class="form-control" id="yourUsername" value="{{ old('email') }}">
-                      </div>
-                      @error('email')
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="yourPassword">
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Password Confirm</label>
+                      <input type="password" name="password_confirmation" class="form-control" id="yourPassword">
+                      @error('password')
                         <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </div>
 
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Reset Password</button>
-                    </div>
-
-                    <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="{{ route('register.index') }}">Create an account</a></p>
-                    </div>
-
-                    <div class="col-12">
-                      <p class="small mb-0">Login to account? <a href="{{ route('login.index') }}">Login</a></p>
+                      <button class="btn btn-primary w-100" type="submit">Submit</button>
                     </div>
 
                   </form>

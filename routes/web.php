@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\WCMController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\LogoutController;
 use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\auth\VerifyController;
 use App\Http\Controllers\landing\LandingController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,10 @@ Route::middleware(['guest'])->group(function(){
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
     Route::post('/register/store', [RegisterController::class, 'register'])->name('register');
     Route::get('verify/{token}', [VerifyController::class, 'verify']);
+    Route::get('/reset', [ResetPasswordController::class, 'index'])->name('reset.index');
+    Route::post('/resetEmail', [ResetPasswordController::class, 'resetEmail'])->name('reset.email');
+    Route::get('/reset/{token}', [ResetPasswordController::class, 'resetToken']);
+    Route::post('/resetSubmit', [ResetPasswordController::class, 'resetSubmit'])->name('reset.submit');
 });
 
 
