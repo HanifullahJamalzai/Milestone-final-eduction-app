@@ -39,20 +39,15 @@ Route::group(['middleware' => ['settingMiddleware', 'LanguageChanger']], functio
 });
 
 
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
-Route::post('/register/store', [RegisterController::class, 'register'])->name('register');
-Route::get('verify/{token}', [VerifyController::class, 'verify']);
-Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+Route::middleware(['guest'])->group(function(){
+    Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+    Route::post('/register/store', [RegisterController::class, 'register'])->name('register');
+    Route::get('verify/{token}', [VerifyController::class, 'verify']);
+});
 
-// Route::get('/wcm', [WCMController::class, 'index'])->name('wcm')->middleware('auth');
-// Route::get('/wcm/create', [WCMController::class, 'create'])->name('wcm.create')->middleware('auth');
-// Route::post('/wcm/store', [WCMController::class, 'store'])->name('wcm.store')->middleware('auth');
-// Route::delete('/wcm/{wcm}/delete', [WCMController::class, 'destroy'])->name('wcm.delete')->middleware('auth');
-// Route::get('/wcm/{wcm}/edit', [WCMController::class, 'edit'])->name('wcm.edit')->middleware('auth');
-// Route::put('/wcm/{wcm}/update', [WCMController::class, 'update'])->name('wcm.update')->middleware('auth');
+
 
 
 // Route::prefix('admin')->group(function () {
@@ -66,6 +61,16 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->mi
 
 // });
 
+
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+
+// Route::get('/wcm', [WCMController::class, 'index'])->name('wcm')->middleware('auth');
+// Route::get('/wcm/create', [WCMController::class, 'create'])->name('wcm.create')->middleware('auth');
+// Route::post('/wcm/store', [WCMController::class, 'store'])->name('wcm.store')->middleware('auth');
+// Route::delete('/wcm/{wcm}/delete', [WCMController::class, 'destroy'])->name('wcm.delete')->middleware('auth');
+// Route::get('/wcm/{wcm}/edit', [WCMController::class, 'edit'])->name('wcm.edit')->middleware('auth');
+// Route::put('/wcm/{wcm}/update', [WCMController::class, 'update'])->name('wcm.update')->middleware('auth');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::resource('wcm', WCMController::class);
