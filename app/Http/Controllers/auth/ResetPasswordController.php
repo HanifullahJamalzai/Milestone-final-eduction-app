@@ -50,6 +50,7 @@ class ResetPasswordController extends Controller
         $request->validate([
             'password' => 'required|min:6|max:255|confirmed'
         ]);
+
         $isToken = PasswordReset::where('token', $request->token)->first();
         if($isToken){
             $user = User::where('email', $isToken->email)->first();
@@ -57,7 +58,6 @@ class ResetPasswordController extends Controller
             $user->save();
             session()->flash('success', 'You have changed your password, Please Login to proceed!');
             return redirect('login');
-
         }else{
             return abort(404);
         }
