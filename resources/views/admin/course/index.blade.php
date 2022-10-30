@@ -68,11 +68,7 @@
                                 
                                 <a class="btn btn-primary btn-sm" href="{{ route('course.edit',['course' => $item->id]) }}">Edit</a>
                                 
-                                <form action="{{ route('course.destroy',['course' => $item->id]) }}" method="post">
-                                  @csrf
-                                  @method('delete')
-                                  <button type="submit" class="btn btn-danger btn-sm">Delete</button> 
-                                </form>
+                                <x-delete-btn-component route="course.destroy" routeKey="course" :keyValue="$item['id']" />
                             </td>
                         </tr>
                     @empty
