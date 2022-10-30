@@ -46,7 +46,8 @@ class LandingController extends Controller
 
     public function course()
     {
-        $courses = Course::all();
+        // $courses = Course::all();
+        $courses = Course::with('trainer')->get();
         return view('landing.course', compact('courses'));
     }
 

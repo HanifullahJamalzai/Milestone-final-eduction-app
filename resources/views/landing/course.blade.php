@@ -33,12 +33,12 @@
                   <p class="price">${{ $item->price }}</p>
                 </div>
 
-                <h3><a href="course-details.html">{{ $item->trainer->category }}</a></h3>
+                <h3><a href="course-details.html">{{ $item->trainer->category ?? 'No Category' }}</a></h3>
                 <p>{!! $item->description !!}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="{{ $item->trainer->photo }}" class="img-fluid" alt="">
-                    <span>{{ $item->trainer->name }}</span>
+                    <img src="{{ $item->trainer->photo ?? 'no photo' }}" class="img-fluid" alt="">
+                    <span>{{ $item->trainer->name ?? 'No name' }}</span>
                   </div>
                 </div>
               </div>
