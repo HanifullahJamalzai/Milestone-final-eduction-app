@@ -88,6 +88,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::get('/course/{course}/forcedelete', [CourseController::class, 'forcedelete'])->name('course.forcedelete');
     Route::resource('course', CourseController::class);
     Route::post('/comment/store/{courseId}', [CommentController::class, 'storeComment'])->name('storeComment');
+    Route::get('/comment/{id}/delete', [CommentController::class, 'comment_destroy'])->name('comment.destroy');
 
 });
 

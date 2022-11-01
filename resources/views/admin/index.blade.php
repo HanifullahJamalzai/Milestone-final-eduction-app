@@ -42,8 +42,7 @@
               <p class="">{{$comment->comment_description}} 
 
                 @can('delete', $comment)
-                  <a href="" class="btn btn-danger btn-sm">Delete</a> 
-                  
+                  <a href="{{ route('comment.destroy', ['id' => $comment->id]) }}" class="btn btn-danger btn-sm">Delete</a> 
                   <a href="" class="btn btn-info btn-sm">Edit</a>
                 @endcan
               </p>

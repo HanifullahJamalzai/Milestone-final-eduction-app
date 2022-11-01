@@ -19,8 +19,13 @@ class CommentController extends Controller
             'course_id' => $courseId,
             'comment_description' => $request->comment_description,
         ]);
-        
-        return redirect('/admin');
 
+        return redirect('/admin');
+        
+    }
+    
+    public function comment_destroy($id){
+        Comment::find($id)->delete();
+        return redirect('/admin');
     }
 }
