@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Trainer;
 use App\Models\User;
+use App\Policies\CommentPolicy;
 use App\Policies\TrainerPolicy;
 use Illuminate\Support\Facades\Gate;
 
@@ -19,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         Trainer::class => TrainerPolicy::class,
+        Comment::class => CommentPolicy::class,
     ];
 
     /**

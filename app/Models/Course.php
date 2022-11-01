@@ -15,4 +15,9 @@ class Course extends Model
     {
         return $this->belongsTo(Trainer::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\CourseController;
 use App\Http\Controllers\admin\TrainerController;
 use App\Http\Controllers\admin\WCMController;
@@ -86,6 +87,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::get('/course/{course}/restore', [CourseController::class, 'restore'])->name('course.restore');
     Route::get('/course/{course}/forcedelete', [CourseController::class, 'forcedelete'])->name('course.forcedelete');
     Route::resource('course', CourseController::class);
+    Route::post('/comment/store/{courseId}', [CommentController::class, 'storeComment'])->name('storeComment');
 
 });
 
