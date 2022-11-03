@@ -28,20 +28,18 @@
           </div>
 
           <form action="
-          
             @if (isset($isComment) AND $isComment->course_id == $item->id)
                   {{ route('comment.update', ['comment' => $isComment->id]) }}
               @else
                 {{ route('storeComment', ['courseId' => $item->id]) }}
               @endif" 
-          method="post" class="w-100">
+            method="post" class="w-100">
             @if(isset($isComment)) @method('PUT') @else @method('POST') @endif
             @csrf
             
             <input type="text" name="comment_description" class="w-75" placeholder="Comment" value=" @if(isset($isComment) AND $isComment->course_id == $item->id) {{ $isComment->comment_description }} @else {{ old('comment_description') }} @endif">
             <button type="submit" class="btn btn-primary btn-sm"> 
             @if(isset($isComment) AND $isComment->course_id == $item->id) Update @else Submit @endif</button>
-
           </form>
           <hr>
           

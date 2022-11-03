@@ -31,6 +31,7 @@ class CommentController extends Controller
     }
     
     public function commentEdit($comment){
+        
         $isComment = Comment::find($comment);
         $courses = Course::all();
         // $courses = Course::with('comments')->get();
