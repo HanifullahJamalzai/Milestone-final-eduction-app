@@ -27,11 +27,21 @@
             </div>
           </div>
 
-          <form action="{{ route('storeComment', ['courseId' => $item->id]) }}" method="post" class="w-100">
+          <form action="
+          
+            @if (isset($isComment) AND $isComment->course_id == $item->id)
+                  {{ route('comment.update', ['comment' => $isComment->id]) }}
+              @else
+                {{ route('storeComment', ['courseId' => $item->id]) }}
+              @endif" 
+          method="post" class="w-100">
+            @if(isset($isComment)) @method('PUT') @else @method('POST') @endif
             @csrf
             
-            <input type="text" name="comment_description" class="w-75" placeholder="Comment">
-            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            <input type="text" name="comment_description" class="w-75" placeholder="Comment" value=" @if(isset($isComment) AND $isComment->course_id == $item->id) {{ $isComment->comment_description }} @else {{ old('comment_description') }} @endif">
+            <button type="submit" class="btn btn-primary btn-sm"> 
+            @if(isset($isComment) AND $isComment->course_id == $item->id) Update @else Submit @endif</button>
+
           </form>
           <hr>
           
@@ -43,7 +53,7 @@
 
                 @can('delete', $comment)
                   <a href="{{ route('comment.destroy', ['id' => $comment->id]) }}" class="btn btn-danger btn-sm">Delete</a> 
-                  <a href="" class="btn btn-info btn-sm">Edit</a>
+                  <a href="{{ route('comment.edit', ['comment' => $comment]) }}" class="btn btn-info btn-sm">Edit</a>
                 @endcan
               </p>
             </div>
