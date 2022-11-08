@@ -91,11 +91,4 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::get('/comment/{id}/delete', [CommentController::class, 'commentDestroy'])->name('comment.destroy');
     Route::get('/comment/{comment}/edit', [CommentController::class, 'commentEdit'])->name('comment.edit');
     Route::put('/comment/{comment}/update', [CommentController::class, 'updateComment'])->name('comment.update');
-
 });
-
-
-
-
-
-
