@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('test', [TestController::class, 'index']);
+Route::get('index', [TestController::class, 'index']);
+Route::get('about', [TestController::class, 'about']);
+Route::get('contact', [TestController::class, 'contact']);
+Route::get('course', [TestController::class, 'course']);
+Route::get('courseDetail/{id}', [TestController::class, 'courseDetail']);
